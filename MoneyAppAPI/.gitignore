@@ -1,0 +1,55 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# Dotnet 
+*.dll
+*.exe
+*.pdb
+*.cache
+*.config
+*.dylib
+*.lib
+*.mdb
+*.nupkg
+*.pri
+*.idb
+*.msi
+*.nuspec
+*.rdlc
+*.resources.dll
+*.pri
+
+# Logs
+*.log
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Runtimes
+.vs/
+.vscode/
+.idea/
