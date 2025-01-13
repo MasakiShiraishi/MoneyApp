@@ -1,6 +1,6 @@
 @MoneyAppBackend_HostAddress = http://localhost:5234
 
-GET {{MoneyAppBackend_HostAddress}}/weatherforecast/
+GET {{MoneyAppBackend_HostAddress}}/api/transaction
 Accept: application/json
 
 ###
