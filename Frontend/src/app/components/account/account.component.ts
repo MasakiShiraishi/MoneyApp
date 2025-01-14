@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { ArrowToHomeComponent } from '../arrow-to-home/arrow-to-home.component';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [],
+  imports: [ArrowToHomeComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css'
 })
