@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { CashbookComponent } from './components/cashbook/cashbook.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [],
@@ -12,7 +13,8 @@ import { CashbookComponent } from './components/cashbook/cashbook.component';
     AppComponent,
     HomeComponent,
     TransactionComponent,
-    CashbookComponent
+    CashbookComponent,
+    AccountComponent
   ],
   providers: [],
   bootstrap: [],
