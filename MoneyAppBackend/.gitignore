@@ -53,3 +53,4 @@ ScaffoldingReadMe.txt
 .vs/
 .vscode/
 .idea/
+.env
