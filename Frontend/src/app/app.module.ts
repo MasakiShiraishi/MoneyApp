@@ -10,6 +10,7 @@ import { TransactionService } from './services/transaction.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FoodTransactionsComponent } from './components/food-transactions/food-transactions.component';
 
 @NgModule({
   declarations: [],
@@ -23,7 +24,8 @@ import { CommonModule } from '@angular/common';
     TransactionComponent,
     CashbookComponent,
     AccountComponent,
-    TransactionListComponent
+    TransactionListComponent,
+    FoodTransactionsComponent
   ],
   providers: [TransactionService],
   bootstrap: [],
