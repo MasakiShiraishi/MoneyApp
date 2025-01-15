@@ -8,5 +8,10 @@
     </div>
   </header>
 
-  <app-transaction-list />
+  <div *ngIf="isLoading; else transactionList">
+    <app-transaction-group-skeleton></app-transaction-group-skeleton>
+  </div>
+  <ng-template #transactionList>
+    <app-transaction-list></app-transaction-list>
+  </ng-template>
 </div>
