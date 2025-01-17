@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { CashbookComponent } from './components/cashbook/cashbook.component';
@@ -15,9 +14,3 @@ export const routes: Routes = [
           {path:'transaction-list', component: TransactionListComponent},
           {path:'cashbook/food',component: FoodComponent}
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
