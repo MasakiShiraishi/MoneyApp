@@ -1,1 +1,9 @@
-<h1 class="text-3xl font-bold text-center mt-4">Mat: {{ totalFoodsAmount }} kr</h1>
+<div class="flex items-center justify-center mt-4 ">
+<h1 class="text-3xl font-bold flex" >
+  <div class="pl-4">Mat: </div>
+  <div class="ml-24">{{ totalFoodsAmount }} kr</div>
+</h1>
+<a routerLink="food" class="ml-2">
+<app-arrow-to-detail></app-arrow-to-detail>
+</a>
+</div>

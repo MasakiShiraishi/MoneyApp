@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../../models/transaction';
 import { TransactionService } from '../../../services/transaction.service';
+import { ArrowToDetailComponent } from '../../arrows/arrow-to-detail/arrow-to-detail.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-calculate-food',
-  imports: [],
+  standalone: true,
+  imports: [ArrowToDetailComponent, RouterModule],
   templateUrl: './calculate-food.component.html',
   styleUrl: './calculate-food.component.css',
 })
