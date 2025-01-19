@@ -20,7 +20,7 @@
         <div>
           <p class="text-xl" style="margin-right: 30px">
             {{
-              transaction.payment === "AMEX" || transaction.payment === "ICA"
+              transaction.payment === "AMEX" || transaction.payment === "ICA" || transaction.payment === "Bank Transfer"
                 ? -transaction.amount
                 : transaction.amount
             }}
