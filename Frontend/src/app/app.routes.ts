@@ -6,6 +6,7 @@ import { AccountComponent } from './components/account/account.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { FoodComponent } from './components/food/food.component';
 import { AccommodationTransactionsComponent } from './components/cashbook-transactions/accommodation-transactions/accommodation-transactions.component';
+import { ClotheTransactionsComponent } from './components/cashbook-transactions/clothe-transactions/clothe-transactions.component';
 
 export const routes: Routes = [
           {path:'', component: HomeComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
           {path:'account', component: AccountComponent},
           {path:'transaction-list', component: TransactionListComponent},
           {path:'foods',component: FoodComponent},
-          {path:'accommodation',component: AccommodationTransactionsComponent}
+          {path:'accommodation',component: AccommodationTransactionsComponent},
+          {path:'clothes',component: ClotheTransactionsComponent},
 ];
