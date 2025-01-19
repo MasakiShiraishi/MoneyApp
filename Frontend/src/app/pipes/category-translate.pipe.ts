@@ -8,6 +8,7 @@ export class CategoryTranslatePipe implements PipeTransform {
     foods: 'Mat',
     accommodation: 'Boende',
     clothes: 'Kläder',
+    hobby: 'Hobby',
   };
   transform(value: string): string {
     return this.translation[value] || value;
