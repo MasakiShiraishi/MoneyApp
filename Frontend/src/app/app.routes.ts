@@ -7,6 +7,7 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { FoodComponent } from './components/food/food.component';
 import { AccommodationTransactionsComponent } from './components/cashbook-transactions/accommodation-transactions/accommodation-transactions.component';
 import { ClotheTransactionsComponent } from './components/cashbook-transactions/clothe-transactions/clothe-transactions.component';
+import { HobbyTransactionsComponent } from './components/cashbook-transactions/hobby-transactions/hobby-transactions.component';
 
 export const routes: Routes = [
           {path:'', component: HomeComponent},
@@ -14,7 +15,8 @@ export const routes: Routes = [
           {path:'cashbook', component: CashbookComponent},
           {path:'account', component: AccountComponent},
           {path:'transaction-list', component: TransactionListComponent},
-          {path:'foods',component: FoodComponent},
-          {path:'accommodation',component: AccommodationTransactionsComponent},
-          {path:'clothes',component: ClotheTransactionsComponent},
+          {path:'cashbook/foods',component: FoodComponent},
+          {path:'cashbook/accommodation',component: AccommodationTransactionsComponent},
+          {path:'cashbook/clothes',component: ClotheTransactionsComponent},
+          {path:'cashbook/hobby', component: HobbyTransactionsComponent},
 ];
