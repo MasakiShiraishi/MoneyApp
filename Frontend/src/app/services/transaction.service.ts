@@ -18,4 +18,9 @@ export class TransactionService {
   getTransaction(id: string): Observable<Transaction>{
    return this.http.get<Transaction>(`${this.apiUrl}/${id}`);
   }
+
+  calculateTotalAmount(transactions: Transaction[], categories: string[]): number {
+    const filteredTransactions = transactions.filter(transaction => categories.includes(transaction.category));
+    return filteredTransactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+  }
 }

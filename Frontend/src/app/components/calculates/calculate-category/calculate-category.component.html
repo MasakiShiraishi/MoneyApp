@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center mt-4">
+  <h1 class="text-3xl font-bold flex">
+    <div class="pl-4">{{ category | categoryTranslate }}:</div>
+    <div class="ml-24">{{ totalAmount }} kr</div>
+  </h1>
+  <a [routerLink]="['/', category]" class="ml-2">
+    <app-arrow-to-detail></app-arrow-to-detail>
+  </a>
+</div>
