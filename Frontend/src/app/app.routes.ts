@@ -8,6 +8,7 @@ import { FoodComponent } from './components/food/food.component';
 import { AccommodationTransactionsComponent } from './components/cashbook-transactions/accommodation-transactions/accommodation-transactions.component';
 import { ClotheTransactionsComponent } from './components/cashbook-transactions/clothe-transactions/clothe-transactions.component';
 import { HobbyTransactionsComponent } from './components/cashbook-transactions/hobby-transactions/hobby-transactions.component';
+import { TransportTransactionsComponent } from './components/cashbook-transactions/transport-transactions/transport-transactions.component';
 
 export const routes: Routes = [
           {path:'', component: HomeComponent},
@@ -19,4 +20,5 @@ export const routes: Routes = [
           {path:'cashbook/accommodation',component: AccommodationTransactionsComponent},
           {path:'cashbook/clothes',component: ClotheTransactionsComponent},
           {path:'cashbook/hobby', component: HobbyTransactionsComponent},
+          {path:'cashbook/transport', component: TransportTransactionsComponent},
 ];
