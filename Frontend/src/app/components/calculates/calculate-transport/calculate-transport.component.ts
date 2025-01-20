@@ -5,12 +5,12 @@ import { CalculateCategoryComponent } from '../calculate-category/calculate-cate
   selector: 'app-calculate-transport',
   standalone: true,
   imports: [CalculateCategoryComponent],
-  template: '<app-calculate-category [category]="category" [subCategories]="clothesSubCategories"></app-calculate-category>',
+  template: '<app-calculate-category [category]="category" [subCategories]="transportsSubCategories"></app-calculate-category>',
   styleUrl: './calculate-transport.component.css'
 })
 export class CalculateTransportComponent {
   category: string = 'transport';
-  clothesSubCategories: string[] = [
+  transportsSubCategories: string[] = [
     'transport',
     'car_insurance',
     'train_ticket',
