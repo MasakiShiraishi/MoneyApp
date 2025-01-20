@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ArrowToCashbookComponent } from '../../arrow-to-cashbook/arrow-to-cashbook.component';
+import { ArrowToCashbookComponent } from '../../arrows/arrow-to-cashbook/arrow-to-cashbook.component';
 import { HeaderCategoryTranslatePipe } from '../../../pipes/header-category-translate.pipe';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArrowToHomeComponent } from '../arrow-to-home/arrow-to-home.component';
+import { ArrowToHomeComponent } from '../arrows/arrow-to-home/arrow-to-home.component';
 
 @Component({
   selector: 'app-account',
