@@ -4,29 +4,29 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
-import { ChartData, ChartOptions } from 'chart.js';
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { Transaction } from '../../models/transaction';
 import { CommonModule } from '@angular/common';
-import {
-  BaseChartDirective,
-  provideCharts,
-  withDefaultRegisterables,
-} from 'ng2-charts';
 import { mainCategoryMap } from '../../category-mapping';
 import { CategoryTranslatePipe } from '../../pipes/category-translate.pipe';
 
 
+Chart.register(...registerables);
+
 @Component({
   selector: 'app-chart',
   standalone: true,
-  imports: [CommonModule, BaseChartDirective],
-  providers: [provideCharts(withDefaultRegisterables())],
+  imports: [CommonModule],
   templateUrl: './chart.component.html',
-  styleUrl: './chart.component.css',
+  styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit, OnChanges {
   @Input() transactions: Transaction[] = [];
+  @ViewChild('chartCanvas', { static: true }) chartCanvas!: ElementRef<HTMLCanvasElement>;
+  chart: Chart | undefined;
   chartData: ChartData<'doughnut'> = {
     labels: [],
     datasets: [
@@ -56,17 +56,33 @@ export class ChartComponent implements OnInit, OnChanges {
   private excludedCategories: string[] = ['lön', 'CSN bidrag'];
 
   ngOnInit(): void {
+    this.createChart();
     this.updateChartData();
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['transactions']) {
-      console.log('ngOnChanges triggered:', changes);
+      // console.log('ngOnChanges triggered:', changes);
       this.updateChartData();
     }
   }
 
+  createChart(): void {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    const ctx = this.chartCanvas.nativeElement.getContext('2d');
+    if (ctx) {
+      this.chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: this.chartData,
+        options: this.chartOptions,
+      });
+    }
+  }
+
   updateChartData(): void {
-    console.log('Updating chart data with transactions:', this.transactions); // debug
+    // console.log('Updating chart data with transactions:', this.transactions); // debug
     const categoryTotals: { [key: string]: number } = {};
 
     this.transactions.forEach((transaction) => {
@@ -84,13 +100,6 @@ export class ChartComponent implements OnInit, OnChanges {
       categoryTotals[mainCategory] += amount;
     });
 
-    // this.chartData.labels = Object.keys(categoryTotals).map(category => new CategoryTranslatePipe().transform(category));
-    // this.chartData.datasets[0].data = Object.values(categoryTotals);
-    // this.chartData.datasets[0].backgroundColor = this.chartData.labels.map(() =>
-    // this.getRandomColor()
-    // );
-    // console.log('Updated chart data:', this.chartData); // debug
-
     const newChartData: ChartData<'doughnut'> = {
       labels: Object.keys(categoryTotals).map((category) =>
         new CategoryTranslatePipe().transform(category)
@@ -105,7 +114,12 @@ export class ChartComponent implements OnInit, OnChanges {
       ],
     };
     this.chartData = newChartData; 
-    console.log('Updated chart data:', this.chartData); // デバッグ用ログ
+    // console.log('Updated chart data:', this.chartData); // debug
+
+    if (this.chart) {
+      this.chart.data = this.chartData;
+      this.chart.update();
+    }
   }
 
   getRandomColor(): string {

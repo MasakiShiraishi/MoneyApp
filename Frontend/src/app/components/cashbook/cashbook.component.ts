@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Transaction } from '../../models/transaction';
 import { TransactionService } from '../../services/transaction.service';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+
 
 @Component({
   selector: 'app-cashbook',
@@ -27,7 +27,7 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
     HttpClientModule,
 
   ],
-  providers: [provideCharts(withDefaultRegisterables())],
+  
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
 })
