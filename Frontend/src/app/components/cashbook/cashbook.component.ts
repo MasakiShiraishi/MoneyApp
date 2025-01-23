@@ -6,6 +6,7 @@ import { CalculateClotheComponent } from '../calculates/calculate-clothe/calcula
 import { CalculateHobbyComponent } from '../calculates/calculate-hobby/calculate-hobby.component';
 import { CalculateTransportComponent } from '../calculates/calculate-transport/calculate-transport.component';
 import { IncomeComponent } from '../calculates/income/income.component';
+import { CostComponent } from '../calculates/cost/cost.component';
 
 @Component({
   selector: 'app-cashbook',
@@ -18,6 +19,7 @@ import { IncomeComponent } from '../calculates/income/income.component';
     CalculateHobbyComponent,
     CalculateTransportComponent,
     IncomeComponent,
+    CostComponent
   ],
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
