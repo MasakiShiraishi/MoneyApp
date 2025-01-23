@@ -5,6 +5,7 @@ import { CalculateAccommodationComponent } from '../calculates/calculate-accommo
 import { CalculateClotheComponent } from '../calculates/calculate-clothe/calculate-clothe.component';
 import { CalculateHobbyComponent } from '../calculates/calculate-hobby/calculate-hobby.component';
 import { CalculateTransportComponent } from '../calculates/calculate-transport/calculate-transport.component';
+import { IncomeComponent } from '../calculates/income/income.component';
 
 @Component({
   selector: 'app-cashbook',
@@ -16,6 +17,7 @@ import { CalculateTransportComponent } from '../calculates/calculate-transport/c
     CalculateClotheComponent,
     CalculateHobbyComponent,
     CalculateTransportComponent,
+    IncomeComponent,
   ],
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
