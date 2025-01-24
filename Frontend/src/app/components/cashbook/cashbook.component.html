@@ -8,19 +8,25 @@
     </div>
   </header>
 
+  <h1 class="text-3xl font-bold text-center my-8">May 2024</h1>
+
   <div class="flex flex-wrap justify-between">
     <div class="w-1/3 p-1">
       <app-income></app-income>
     </div>
-    <div class="w-1/3 p-1">
+    <div
+      class="w-1/3 p-1 hover:bg-gray-200 hover:text-blue-500"
+      (click)="navigateWithDelay('/transaction')"
+    >
       <app-cost></app-cost>
     </div>
     <div class="w-1/3 p-1">
-      <h1>test</h1>
+      <app-balance></app-balance>
     </div>
   </div>
 
-  <h2 class="text-5xl font-bold text-center mt-32">This is KASSABOK.</h2>
+  <div class="text-center my-16">calculate chart is coming</div>
+
   <app-calculate-accommodation></app-calculate-accommodation>
   <app-calculate-food></app-calculate-food>
   <app-calculate-clothe></app-calculate-clothe>
