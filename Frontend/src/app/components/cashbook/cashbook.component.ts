@@ -7,6 +7,8 @@ import { CalculateHobbyComponent } from '../calculates/calculate-hobby/calculate
 import { CalculateTransportComponent } from '../calculates/calculate-transport/calculate-transport.component';
 import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
+import { BalanceComponent } from '../calculates/balance/balance.component';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cashbook',
@@ -19,9 +21,19 @@ import { CostComponent } from '../calculates/cost/cost.component';
     CalculateHobbyComponent,
     CalculateTransportComponent,
     IncomeComponent,
-    CostComponent
+    CostComponent,
+    BalanceComponent,
+    RouterModule,
   ],
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
 })
-export class CashbookComponent {}
+export class CashbookComponent {
+  constructor(private router: Router) {}
+
+  navigateWithDelay(url: string): void {
+    setTimeout(() => {
+      this.router.navigate([url]);
+    }, 2000);
+  }
+}

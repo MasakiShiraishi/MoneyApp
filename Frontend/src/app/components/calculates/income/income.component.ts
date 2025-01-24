@@ -42,6 +42,7 @@ export class IncomeComponent {
       (sum, transaction) => sum + transaction.amount,
       0
     );
+    this.transactionService.setIncomeTotal(this.totalAmount);
   }
 
   getFormattedAmount(): string {
