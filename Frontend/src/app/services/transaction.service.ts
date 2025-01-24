@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Transaction } from '../models/transaction';
 
 @Injectable({
@@ -8,6 +8,12 @@ import { Transaction } from '../models/transaction';
 })
 export class TransactionService {
   private apiUrl = 'http://localhost:5234/api/Transaction';
+
+  private incomeTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private costTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
+  incomeTotal$ = this.incomeTotal.asObservable();
+  costTotal$ = this.costTotal.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -22,5 +28,12 @@ export class TransactionService {
   calculateTotalAmount(transactions: Transaction[], categories: string[]): number {
     const filteredTransactions = transactions.filter(transaction => categories.includes(transaction.category));
     return filteredTransactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+  }
+
+  setIncomeTotal(total: number): void {
+    this.incomeTotal.next(total);
+  }
+  setCostTotal(total: number): void {   
+    this.costTotal.next(total);
   }
 }
