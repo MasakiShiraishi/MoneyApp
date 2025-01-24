@@ -44,6 +44,7 @@ export class CostComponent {
       (acc, transaction) => acc + transaction.amount,
       0
     );
+    this.transactionService.setCostTotal(this.totalCost);
     this.totalCost = -this.totalCost;
   }
   getFormattedTotalCost(): string {
