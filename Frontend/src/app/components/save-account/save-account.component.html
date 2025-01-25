@@ -1,0 +1,13 @@
+<div class="flex-container">
+  <div>
+    <h1 class="roboto text-1xl mx-2 font-bold">Sparakonton</h1>
+    <div class="flex justify-between mt-2 mx-8 p-2 bg-slate-100 rounded-xl">
+      <h2>ICA bank</h2>
+      <div>{{ getFormattedAmount(icaAmount || 0) }} kr</div>
+    </div>
+    <div class="flex justify-between mt-2 mx-8 p-2 bg-slate-100 rounded-xl">
+      <h2>Avanza bank</h2>
+      <div>{{ getFormattedAmount(avanzaAmount || 0) }} kr</div>
+    </div>
+  </div>
+</div>
