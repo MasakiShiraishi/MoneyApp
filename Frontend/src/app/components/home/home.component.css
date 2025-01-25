@@ -1,0 +1,24 @@
+.rounded-full {
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  padding: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.flex-item {
+  flex: 1;
+  margin: 10px;
+}
+
+.home-section {
+  font-size: 1.5rem;   
+  border-radius: 0.75rem; 
+  padding: 0.35rem; 
+}
