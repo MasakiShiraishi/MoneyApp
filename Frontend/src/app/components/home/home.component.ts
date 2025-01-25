@@ -5,6 +5,7 @@ import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
 import { CurrencyPipe } from '@angular/common';
+import { CurrencyFormatService } from '../../services/currency-format-service';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,15 @@ import { CurrencyPipe } from '@angular/common';
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe, CurrencyFormatService],
 })
 export class HomeComponent {
   totalAmount: number = 0;
 
-  constructor(private cdr: ChangeDetectorRef, private currencyPipe: CurrencyPipe) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private currencyFormatService: CurrencyFormatService
+  ) {}
 
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
@@ -33,9 +37,8 @@ export class HomeComponent {
     this.totalAmount = total;
     this.cdr.detectChanges();
   }
-  getFormattedAmount(amount: number): string {
-    const formattedAmount = this.currencyPipe.transform(amount, 'SEK', 'symbol', '1.0-0');
-    return formattedAmount ? formattedAmount.replace('SEK', '').trim() : '0';
-  }
 
+  getFormatAmount(amount: number): string {
+    return this.currencyFormatService.getFormattedAmount(amount);
+  }
 }

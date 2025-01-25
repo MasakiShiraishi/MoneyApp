@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Transaction } from '../../../models/transaction';
 import { TransactionService } from '../../../services/transaction.service';
 import { CurrencyPipe } from '@angular/common';
+import { CurrencyFormatService } from '../../../services/currency-format-service';
 
 @Component({
   selector: 'app-payment-summary',
   imports: [],
   templateUrl: './payment-summary.component.html',
   styleUrl: './payment-summary.component.css',
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe, CurrencyFormatService],
 })
 export class PaymentSummaryComponent {
   transactions: Transaction[] = [];
@@ -16,7 +17,7 @@ export class PaymentSummaryComponent {
 
   constructor(
     private transactionService: TransactionService,
-    private currencyPipe: CurrencyPipe
+    private currencyFormatService: CurrencyFormatService
   ) {}
 
   ngOnInit(): void {
@@ -33,11 +34,9 @@ export class PaymentSummaryComponent {
         console.error('Error fetching transactions', error);
       }
     );
+  } 
+
+  getFormattedNegativeAmount(amount: number): string {
+    return this.currencyFormatService.getFormattedNegativeAmount(amount);
   }
-  getFormattedAmount(amount: number): string {
-    const negativeAmount = -amount;
-    const formattedAmount = this.currencyPipe.transform(negativeAmount, 'SEK', 'symbol', '1.0-0');
-    return formattedAmount ? formattedAmount.replace('SEK', '').trim() : '0';
-  }
-  
 }

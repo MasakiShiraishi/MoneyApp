@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Transaction } from '../../../models/transaction';
 import { TransactionService } from '../../../services/transaction.service';
 import { CurrencyPipe } from '@angular/common';
+import { CurrencyFormatService } from '../../../services/currency-format-service';
 
 @Component({
   selector: 'app-cost',
   imports: [],
   templateUrl: './cost.component.html',
   styleUrl: './cost.component.css',
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe, CurrencyFormatService],
 })
 export class CostComponent {
   transactions: Transaction[] = [];
@@ -16,7 +17,7 @@ export class CostComponent {
 
   constructor(
     private transactionService: TransactionService,
-    private currencyPipe: CurrencyPipe
+    private currencyFormatService: CurrencyFormatService
   ) {}
 
   ngOnInit(): void {
@@ -45,17 +46,11 @@ export class CostComponent {
       0
     );
     this.transactionService.setCostTotal(this.totalCost);
-    this.totalCost = -this.totalCost;
   }
-  getFormattedTotalCost(): string {
-    const formattedTotalCost = this.currencyPipe.transform(
-      this.totalCost,
-      'SEK',
-      'symbol',
-      '1.0-0'
+
+  getFormattedNegativeAmount(): string {
+    return this.currencyFormatService.getFormattedNegativeAmount(
+      this.totalCost
     );
-    return formattedTotalCost
-      ? formattedTotalCost.replace('SEK', '').trim()
-      : '0';
   }
 }
