@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Transaction } from '../../models/transaction';
 import { TransactionService } from '../../services/transaction.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TransactionGroupSkeletonComponent } from '../skeleton/transaction-group-skeleton/transaction-group-skeleton.component';
+import { CurrencyFormatService } from '../../services/currency-format-service';
 
 @Component({
   selector: 'app-transaction-list',
@@ -11,6 +12,7 @@ import { TransactionGroupSkeletonComponent } from '../skeleton/transaction-group
   imports: [CommonModule, HttpClientModule, TransactionGroupSkeletonComponent],
   templateUrl: './transaction-list.component.html',
   styleUrl: './transaction-list.component.css',
+  providers: [CurrencyPipe,CurrencyFormatService],
 })
 export class TransactionListComponent implements OnInit {
   @Input() category: string = '';
@@ -19,7 +21,11 @@ export class TransactionListComponent implements OnInit {
   lastDate: string | null = null;
   isLoading = true;
 
-  constructor(private transactionService: TransactionService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private transactionService: TransactionService,
+    private cdr: ChangeDetectorRef,
+    private currencyFormatService: CurrencyFormatService
+  ) {}
 
   ngOnInit(): void {
     this.fetchTransactions();
@@ -30,7 +36,6 @@ export class TransactionListComponent implements OnInit {
       this.isLoading = false;
       this.cdr.detectChanges();
     }, 1500);
-
   }
 
   fetchTransactions(): void {
@@ -46,7 +51,7 @@ export class TransactionListComponent implements OnInit {
           .sort((a, b) => {
             return new Date(b.date).getTime() - new Date(a.date).getTime();
           });
-         this.setTimeouts();
+        this.setTimeouts();
       },
       (error) => {
         console.error('Error fetching transactions:', error);
@@ -70,5 +75,9 @@ export class TransactionListComponent implements OnInit {
       day: 'numeric',
     };
     return new Date(date).toLocaleDateString('sv-SE', options);
+  }
+
+  getFormattedNegativeAmount(amount: number): string {
+    return this.currencyFormatService.getFormattedNegativeAmount(amount);
   }
 }

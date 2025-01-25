@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TransactionService } from '../../../services/transaction.service';
 import { Transaction } from '../../../models/transaction';
 import { CurrencyPipe } from '@angular/common';
+import { CurrencyFormatService } from '../../../services/currency-format-service';
 
 @Component({
   selector: 'app-income',
@@ -9,13 +10,16 @@ import { CurrencyPipe } from '@angular/common';
   imports: [],
   templateUrl: './income.component.html',
   styleUrl: './income.component.css',
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe, CurrencyFormatService],
 })
 export class IncomeComponent {
   transactions: Transaction[] = [];
   totalAmount: number = 0;
 
-  constructor(private transactionService: TransactionService, private currencyPipe: CurrencyPipe) {}
+  constructor(
+    private transactionService: TransactionService,
+    private currencyFormatService: CurrencyFormatService
+  ) {}
 
   ngOnInit(): void {
     this.fetchTransactions();
@@ -46,10 +50,6 @@ export class IncomeComponent {
   }
 
   getFormattedAmount(): string {
-    const formattedAmount = this.currencyPipe.transform(this.totalAmount, 'SEK', 'symbol', '1.0-0');
-    return formattedAmount ? formattedAmount.replace('SEK', '').trim() : '0';
+    return this.currencyFormatService.getFormattedAmount(this.totalAmount);
   }
-  
-  
-
 }

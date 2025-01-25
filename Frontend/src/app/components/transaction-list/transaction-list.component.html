@@ -25,7 +25,7 @@
           <p class="text-xl mr-6">
             {{
               transaction.payment === "AMEX" || transaction.payment === "ICA" || transaction.payment === "Bank Transfer"
-                ? -transaction.amount
+                ? getFormattedNegativeAmount(transaction.amount)
                 : transaction.amount
             }}
             kr
