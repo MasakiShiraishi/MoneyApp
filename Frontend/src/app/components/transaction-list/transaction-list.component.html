@@ -3,7 +3,7 @@
 </div>
 <ng-template #transactionList>
 <div class="transactions-container" *ngIf="transactions.length > 0; else noTransactions">
-  <h2 class="text-3xl font-bold ml-6 mb-6">Lista</h2>
+  <h2 class="text-3xl font-bold ml-6">Lista</h2>
   <ul>
     
     <ng-container  *ngFor="let transaction of transactions; let i = index">
