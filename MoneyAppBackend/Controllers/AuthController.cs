@@ -29,7 +29,7 @@ public class AuthController : ControllerBase
           }
 
           [HttpPost("login")]
-          public async Task<ActionResult<User>> Login([FromBody] User user)
+          public async Task<ActionResult<string>> Login([FromBody] User user)
           {
                     if (string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
                     {
@@ -38,7 +38,8 @@ public class AuthController : ControllerBase
 
                     var foundUser = await _authrepository.GetAsync(user.Username);
 
-                    if (foundUser == null || foundUser.Salt == null || foundUser.Password == null || !PasswordHasher.VerifyPassword(user.Password, foundUser.Salt, foundUser.Password))
+                    if (foundUser == null || foundUser.Salt == null || foundUser.Password == null || 
+                    !PasswordHasher.VerifyPassword(user.Password, foundUser.Salt, foundUser.Password))
                     {
                               return Unauthorized();
                     }
