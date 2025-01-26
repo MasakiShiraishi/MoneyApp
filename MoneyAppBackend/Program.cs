@@ -26,6 +26,9 @@ builder.Services.AddSingleton(sp =>
 sp.GetRequiredService<IMongoClient>().GetDatabase(mongoSettings.DatabaseName));
 
 builder.Services.AddTransient<TransactionRepository>();
+builder.Services.AddTransient<AuthRepository>();
+builder.Services.AddTransient<JwtTokenGenerator>();
+builder.Services.AddTransient<PasswordHasher>();
 
 // CORS settings
 builder.Services.AddCors(options =>
