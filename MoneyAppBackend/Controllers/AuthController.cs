@@ -11,15 +11,15 @@ public class AuthController : ControllerBase
           private readonly JwtTokenGenerator _jwtTokenGenerator;
           private readonly PasswordHasher _passwordHasher;
 
-          public AuthController(AuthRepository authrepository, JwtTokenGenerator jwtTokenGenerator, PasswordHasher passwordHasher)
+          private readonly EmailService _emailService;
+
+          public AuthController(AuthRepository authrepository, JwtTokenGenerator jwtTokenGenerator, PasswordHasher passwordHasher, EmailService emailService)
           {
                     _authrepository = authrepository;
                     _jwtTokenGenerator = jwtTokenGenerator;
                     _passwordHasher = passwordHasher;
+                    _emailService = emailService;
           }
-
-
-
 
           [HttpGet]
           public async Task<ActionResult<IEnumerable<User>>> Get()
@@ -38,12 +38,18 @@ public class AuthController : ControllerBase
 
                     var foundUser = await _authrepository.GetAsync(user.Username);
 
-                    if (foundUser == null || foundUser.Salt == null || foundUser.Password == null || 
+                    if (foundUser == null || foundUser.Salt == null || foundUser.Password == null ||
                     !PasswordHasher.VerifyPassword(user.Password, foundUser.Salt, foundUser.Password))
                     {
                               return Unauthorized();
                     }
                     var token = _jwtTokenGenerator.GenerateToken(user.Username);
+
+                    // Send email notification
+                    if (!string.IsNullOrEmpty(foundUser.Email))
+                    {
+                              await _emailService.SendEmailAsync(foundUser.Email, "Login Notification", "You have successfully logged in.");
+                    }
                     return Ok(token);
           }
 
@@ -58,6 +64,9 @@ public class AuthController : ControllerBase
                     user.Password = PasswordHasher.HashPassword(user.Password, user.Salt);
 
                     var createdUser = await _authrepository.CreateAsync(user);
+
+                    // Send email notification
+                    await _emailService.SendEmailAsync(user.Email, "Registration Notification", "You have successfully registered.");
                     return Ok(createdUser);
 
 
