@@ -1,0 +1,52 @@
+<div class="bg-gray-50 h-screen flex justify-center items-start pt-32">
+  <div class="bg-white p-8 rounded-lg shadow-md w-96">
+    <h1 class="text-2xl font-bold mb-6">
+      {{ isLogin ? "Login" : "Register" }}
+    </h1>
+    <p *ngIf="error" class="text-red-500 mb-4">{{ error }}</p>
+    <form (ngSubmit)="handleSubmit()">
+      <div class="mb-4">
+        <label class="block text-gray-700">Användarnamn</label>
+        <input
+          name="username"
+          type="text"
+          placeholder="Ange användarnamn"
+          [(ngModel)]="username"
+          class="w-full px-3 py-2 border rounded-lg"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Lösenord</label>
+        <input
+          name="password"
+          type="password"
+          placeholder="Ange lösenord"
+          [(ngModel)]="password"
+          class="w-full px-3 py-2 border rounded-lg"
+        />
+      </div>
+      <div *ngIf="!isLogin" class="mb-4">
+        <label class="block text-gray-700">E-post</label>
+        <input
+          name="email"
+          type="email"
+          placeholder="Ange e-post"
+          [(ngModel)]="email"
+          class="w-full px-3 py-2 border rounded-lg"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-blue-500 text-white py-2 rounded-lg"
+      >
+        {{ isLogin ? "Login" : "Register" }}
+      </button>
+    </form>
+    <p class="mt-4 text-center">
+      {{ isLogin ? "Har inget konto?" : "Har du redan ett konto?" }}
+      <button (click)="toggleForm()" class="text-blue-500 underline">
+        {{ isLogin ? "Registrera här" : "Logga in här" }}
+      </button>
+    </p>
+  </div>
+</div>

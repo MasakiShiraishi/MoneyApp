@@ -7,8 +7,23 @@
       </div>
     </div>
   </header>
+  <app-logout-button></app-logout-button>
+  <h1 class="text-3xl font-bold text-center my-8">May 2024</h1>
 
-  <h1 class="text-5xl font-bold text-center mt-32">This is KASSABOK.</h1>
+  <div class="flex flex-wrap justify-between">
+    <div class="w-1/3 p-1">
+      <app-income></app-income>
+    </div>
+    <div
+      class="w-1/3 p-1 hover:bg-gray-200 hover:text-blue-500"
+      (click)="navigateWithDelay('/transaction')"
+    >
+      <app-cost></app-cost>
+    </div>
+    <div class="w-1/3 p-1">
+      <app-balance></app-balance>
+    </div>
+  </div>
   
   <app-chart  [transactions]="transactions"></app-chart>
   <app-calculate-accommodation></app-calculate-accommodation>

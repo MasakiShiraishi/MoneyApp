@@ -5,6 +5,11 @@ import { CalculateAccommodationComponent } from '../calculates/calculate-accommo
 import { CalculateClotheComponent } from '../calculates/calculate-clothe/calculate-clothe.component';
 import { CalculateHobbyComponent } from '../calculates/calculate-hobby/calculate-hobby.component';
 import { CalculateTransportComponent } from '../calculates/calculate-transport/calculate-transport.component';
+import { IncomeComponent } from '../calculates/income/income.component';
+import { CostComponent } from '../calculates/cost/cost.component';
+import { BalanceComponent } from '../calculates/balance/balance.component';
+import { RouterModule, Router } from '@angular/router';
+import { LogoutButtonComponent } from "../logout-button/logout-button.component";
 import { ChartComponent } from '../chart/chart.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,11 +27,16 @@ import { TransactionService } from '../../services/transaction.service';
     CalculateClotheComponent,
     CalculateHobbyComponent,
     CalculateTransportComponent,
+    IncomeComponent,
+    CostComponent,
+    BalanceComponent,
+    RouterModule,
+    LogoutButtonComponent,
     ChartComponent,
     CommonModule,
     HttpClientModule,
 
-  ],
+],
   
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
@@ -35,7 +45,12 @@ export class CashbookComponent implements OnInit {
   transactions: Transaction[] = [];
   chartData: { category: string; total: number }[] = [];
 
-  constructor(private transactionService: TransactionService) {}
+  constructor(private transactionService: TransactionService, private router: Router) {}
+navigateWithDelay(url: string): void {
+  setTimeout(() => {
+    this.router.navigate([url]);
+  }, 2000);
+}
 
   ngOnInit(): void {
     this.fetchTransactions();
@@ -45,35 +60,10 @@ export class CashbookComponent implements OnInit {
     this.transactionService.getTransactions().subscribe(
       (data) => {
         this.transactions = data;
-        // console.log('Fetched transactions:', this.transactions);
-        // this.calculateChartData();
       },
       (error) => {
         console.error('Error fetching transactions:', error); // debug
       }
     );
   }
-
-  // calculateChartData(): void {
-    // const categoryTotals: { [category: string]: number } = {};
-    // this.transactions.forEach((transaction) => {
-      // const category = transaction.category;
-      // const amount =
-        // transaction.payment === 'AMEX' ||
-        // transaction.payment === 'ICA' ||
-        // transaction.payment === 'Bank Transfer'
-          // ? -transaction.amount
-          // : transaction.amount;
-      // if (categoryTotals[category]) {
-        // categoryTotals[category] += amount;
-      // } else {
-        // categoryTotals[category] = amount;
-      // }
-    // });
-    // this.chartData = Object.keys(categoryTotals).map((category) => ({
-      // category,
-      // total: categoryTotals[category],
-    // }));
-    // console.log('Calculated chart data:', this.chartData);// debug
-  // }
 }

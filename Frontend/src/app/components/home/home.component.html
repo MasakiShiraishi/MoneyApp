@@ -1,7 +1,39 @@
 <div>
   <header class="py-4 bg-gray-300 text-center">
-    <h1 class="roboto text-3xl font-bold">HOME</h1>
+    <h1 class="roboto text-3xl font-bold">HOME</h1>    
   </header>
+  <app-logout-button></app-logout-button>
 
-  <h1 class="text-5xl font-bold text-center mt-32">This is home.</h1>
+  <h1 class="roboto text-2xl mx-2 font-bold mt-8">Sparande</h1>
+  <div class="flex justify-between mt-2 mx-6 p-3 bg-slate-100 rounded-xl">
+    <h2 class="mx-2">Total</h2>
+    <div >{{getFormatAmount(totalAmount || 0)}} kr</div>
+  </div>
+  <h1 class="roboto text-2xl mx-2 font-bold mt-8">Hushållets kontobok</h1>
+
+  <div class="flex-container bg-slate-100 rounded-xl">
+    <div class="flex-item">
+  <img
+    src="/assets/money-pie-chart.png"
+    alt="Money Pie Chart"
+    class="h-48 w-48 mx-1 rounded-full"
+  />
+</div>
+  <div class="flex-item text-base">
+    <div class="home-section">
+      <app-income></app-income>
+    </div>
+    <div class="home-section">
+      <app-cost></app-cost>
+    </div>
+    <div class="home-section">
+      <app-balance></app-balance>
+    </div>
+  </div>
+</div>
+
+  <app-payment-summary></app-payment-summary>
+  <app-save-account
+    (totalAmountChange)="onTotalAmountChange($event)"
+  ></app-save-account>
 </div>
