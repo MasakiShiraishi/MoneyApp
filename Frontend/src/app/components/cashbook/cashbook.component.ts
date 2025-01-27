@@ -9,6 +9,7 @@ import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
 import { RouterModule, Router } from '@angular/router';
+import { LogoutButtonComponent } from "../logout-button/logout-button.component";
 
 @Component({
   selector: 'app-cashbook',
@@ -24,7 +25,8 @@ import { RouterModule, Router } from '@angular/router';
     CostComponent,
     BalanceComponent,
     RouterModule,
-  ],
+    LogoutButtonComponent
+],
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
 })

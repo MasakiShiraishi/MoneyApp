@@ -4,8 +4,9 @@ import { SaveAccountComponent } from '../save-account/save-account.component';
 import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CurrencyFormatService } from '../../services/currency-format-service';
+import { LogoutButtonComponent } from '../logout-button/logout-button.component';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,8 @@ import { CurrencyFormatService } from '../../services/currency-format-service';
     IncomeComponent,
     CostComponent,
     BalanceComponent,
+    CommonModule,
+    LogoutButtonComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

@@ -3,6 +3,7 @@ import { ArrowToHomeComponent } from '../arrows/arrow-to-home/arrow-to-home.comp
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { LogoutButtonComponent } from '../logout-button/logout-button.component';
 
 @Component({
   selector: 'app-transaction',
@@ -12,8 +13,10 @@ import { CommonModule } from '@angular/common';
     TransactionListComponent,
     HttpClientModule,
     CommonModule,
+    LogoutButtonComponent
   ],
   templateUrl: './transaction.component.html',
   styleUrl: './transaction.component.css',
 })
-export class TransactionComponent {}
+export class TransactionComponent {
+}

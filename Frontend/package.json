@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve\" \"dotnet run --project C:/source/lernia/8Examenarbete/MoneyApp/MoneyAppBackend/MoneyAppBackend.csproj\"",
+    "start": "concurrently \"ng serve\" \"dotnet run --project C:/source/EXAM/MoneyApp/MoneyAppBackend/MoneyAppBackend.csproj\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
