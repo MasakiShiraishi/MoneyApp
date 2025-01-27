@@ -9,13 +9,12 @@ import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
 import { RouterModule, Router } from '@angular/router';
-import { LogoutButtonComponent } from "../logout-button/logout-button.component";
+import { LogoutButtonComponent } from '../logout-button/logout-button.component';
 import { ChartComponent } from '../chart/chart.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Transaction } from '../../models/transaction';
 import { TransactionService } from '../../services/transaction.service';
-
 
 @Component({
   selector: 'app-cashbook',
@@ -35,9 +34,8 @@ import { TransactionService } from '../../services/transaction.service';
     ChartComponent,
     CommonModule,
     HttpClientModule,
+  ],
 
-],
-  
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
 })
@@ -45,12 +43,15 @@ export class CashbookComponent implements OnInit {
   transactions: Transaction[] = [];
   chartData: { category: string; total: number }[] = [];
 
-  constructor(private transactionService: TransactionService, private router: Router) {}
-navigateWithDelay(url: string): void {
-  setTimeout(() => {
-    this.router.navigate([url]);
-  }, 2000);
-}
+  constructor(
+    private transactionService: TransactionService,
+    private router: Router
+  ) {}
+  navigateWithDelay(url: string): void {
+    setTimeout(() => {
+      this.router.navigate([url]);
+    }, 2000);
+  }
 
   ngOnInit(): void {
     this.fetchTransactions();
