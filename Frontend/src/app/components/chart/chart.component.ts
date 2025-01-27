@@ -6,10 +6,12 @@ import {
   SimpleChanges,
   ElementRef,
   ViewChild,
+  Inject,
+  PLATFORM_ID,
 } from '@angular/core';
 import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { Transaction } from '../../models/transaction';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 import { CategoryTranslatePipe } from '../../pipes/category-translate.pipe';
 import { mainCategoryMap } from '../../category-mapping';
@@ -55,11 +57,18 @@ export class ChartComponent implements OnInit, OnChanges {
     },
   };
   private excludedCategories: string[] = ['lön', 'CSN bidrag'];
+  private colorPalette: string[] = [
+    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
+    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+  ];
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   ngOnInit(): void {
+    if(isPlatformBrowser(this.platformId)) {
     this.createChart();
     this.updateChartData();
   }
+}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['transactions']) {
@@ -106,8 +115,8 @@ export class ChartComponent implements OnInit, OnChanges {
       datasets: [
         {
           data: Object.values(categoryTotals),
-          backgroundColor: Object.keys(categoryTotals).map(() =>
-            this.getRandomColor()
+          backgroundColor: Object.keys(categoryTotals).map((_, index) =>
+            this.getRandomColor(index)
           ),
         },
       ],
@@ -120,12 +129,7 @@ export class ChartComponent implements OnInit, OnChanges {
     }
   }
 
-  getRandomColor(): string {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
+  getRandomColor(index: number): string {
+    return this.colorPalette[index % this.colorPalette.length];
+  }  
 }
