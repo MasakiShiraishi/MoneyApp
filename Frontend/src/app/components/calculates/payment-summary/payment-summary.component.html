@@ -1,0 +1,18 @@
+<div class="flex-container">
+  <h1 class="roboto text-1xl mx-2 font-bold">Transaktionskonton</h1>
+  <div class="flex justify-between mt-2 mx-8 p-2 bg-slate-100 rounded-xl">
+    <h2>ICA bank</h2>
+    <div>{{ getFormattedNegativeAmount(totalByPayment["Bank Transfer"] || 0 )}} kr</div>
+  </div>
+  <div>
+    <h1 class="roboto text-1xl mx-2 font-bold">Kreditkort</h1>
+    <div class="flex justify-between mt-2 mx-8 p-2 bg-slate-100 rounded-xl">
+      <h2>AMEX</h2>
+      <div>{{ getFormattedNegativeAmount(totalByPayment["AMEX"] || 0 )}} kr</div>
+    </div>
+    <div class="flex justify-between mt-2 mx-8 p-2 bg-slate-100 rounded-xl">
+      <h2>ICA</h2>
+      <div>{{ getFormattedNegativeAmount(totalByPayment["ICA"] || 0 )}} kr</div>
+    </div>
+  </div>
+</div>

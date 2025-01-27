@@ -3,14 +3,16 @@ import { Transaction } from '../../../models/transaction';
 import { TransactionService } from '../../../services/transaction.service';
 import { ArrowToDetailComponent } from '../../arrows/arrow-to-detail/arrow-to-detail.component';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CategoryTranslatePipe } from '../../../pipes/category-translate.pipe';
+import { CurrencyFormatService } from '../../../services/currency-format-service';
 
 @Component({
   selector: 'app-calculate-category',
   imports: [ArrowToDetailComponent, RouterModule, CommonModule, CategoryTranslatePipe],
   templateUrl: './calculate-category.component.html',
-  styleUrl: './calculate-category.component.css'
+  styleUrl: './calculate-category.component.css',
+  providers: [CurrencyPipe,CurrencyFormatService],
 })
 export class CalculateCategoryComponent implements OnInit {
   @Input() category: string = '';
@@ -18,7 +20,7 @@ export class CalculateCategoryComponent implements OnInit {
   transactions: Transaction[] = [];
   totalAmount: number = 0;
   
-  constructor(private transactionService: TransactionService){} 
+  constructor(private transactionService: TransactionService, private currencyFormatservice: CurrencyFormatService){} 
 
   ngOnInit(): void {
     this.fetchTransactions();
@@ -33,5 +35,7 @@ export class CalculateCategoryComponent implements OnInit {
       (error: any) => console.error('Error fetching transactions:', error)
     );
   }
-
+  getFormattedAmount(amount: number): string {
+    return this.currencyFormatservice.getFormattedAmount(amount);
+  }
 }

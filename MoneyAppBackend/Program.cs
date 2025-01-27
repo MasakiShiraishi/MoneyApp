@@ -26,6 +26,18 @@ builder.Services.AddSingleton(sp =>
 sp.GetRequiredService<IMongoClient>().GetDatabase(mongoSettings.DatabaseName));
 
 builder.Services.AddTransient<TransactionRepository>();
+builder.Services.AddTransient<AuthRepository>();
+builder.Services.AddTransient<JwtTokenGenerator>();
+builder.Services.AddTransient<PasswordHasher>();
+
+// smtp settings
+var smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER") ?? throw new ArgumentNullException("SMTP_SERVER environment variable is not set.");
+var smtpPortString = Environment.GetEnvironmentVariable("SMTP_PORT") ?? throw new ArgumentNullException("SMTP_PORT environment variable is not set.");
+var smtpPort = int.Parse(smtpPortString);
+var smtpUsername = Environment.GetEnvironmentVariable("SMTP_USERNAME") ?? throw new ArgumentNullException("SMTP_USERNAME environment variable is not set.");
+var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? throw new ArgumentNullException("SMTP_PASSWORD environment variable is not set.");
+
+builder.Services.AddSingleton(new EmailService(smtpServer, smtpPort, smtpUsername, smtpPassword));
 
 // CORS settings
 builder.Services.AddCors(options =>

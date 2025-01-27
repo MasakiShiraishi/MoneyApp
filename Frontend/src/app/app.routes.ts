@@ -9,16 +9,21 @@ import { ClotheTransactionsComponent } from './components/cashbook-transactions/
 import { HobbyTransactionsComponent } from './components/cashbook-transactions/hobby-transactions/hobby-transactions.component';
 import { TransportTransactionsComponent } from './components/cashbook-transactions/transport-transactions/transport-transactions.component';
 import { FoodTransactionsComponent } from './components/cashbook-transactions/food-transactions/food-transactions.component';
+import { LoginRegisterComponent } from './components/login-register/login-register.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
-          {path:'', component: HomeComponent},
-          {path:'transaction', component: TransactionComponent},
-          {path:'cashbook', component: CashbookComponent},
-          {path:'account', component: AccountComponent},
-          {path:'transaction-list', component: TransactionListComponent},
-          {path:'cashbook/foods',component: FoodTransactionsComponent},
-          {path:'cashbook/accommodation',component: AccommodationTransactionsComponent},
-          {path:'cashbook/clothes',component: ClotheTransactionsComponent},
-          {path:'cashbook/hobby', component: HobbyTransactionsComponent},
-          {path:'cashbook/transport', component: TransportTransactionsComponent},
+          {path:'login-register', component: LoginRegisterComponent},
+          {path:'', component: HomeComponent, canActivate: [AuthGuard]},
+          {path:'transaction', component: TransactionComponent, canActivate: [AuthGuard]},
+          {path:'cashbook', component: CashbookComponent, canActivate: [AuthGuard]},
+          {path:'account', component: AccountComponent, canActivate: [AuthGuard]},
+          {path:'transaction-list', component: TransactionListComponent, canActivate: [AuthGuard]},
+          {path:'cashbook/foods',component: FoodTransactionsComponent, canActivate: [AuthGuard]},
+          {path:'cashbook/accommodation',component: AccommodationTransactionsComponent, canActivate: [AuthGuard]},
+          {path:'cashbook/clothes',component: ClotheTransactionsComponent, canActivate: [AuthGuard]},
+          {path:'cashbook/hobby', component: HobbyTransactionsComponent, canActivate: [AuthGuard]},
+          {path:'cashbook/transport', component: TransportTransactionsComponent, canActivate: [AuthGuard]},
+          {path: '**', redirectTo: '' }
+          
 ];
