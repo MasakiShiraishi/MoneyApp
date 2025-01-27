@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArrowToHomeComponent } from '../arrows/arrow-to-home/arrow-to-home.component';
 import { CalculateFoodComponent } from '../calculates/calculate-food/calculate-food.component';
 import { CalculateAccommodationComponent } from '../calculates/calculate-accommodation/calculate-accommodation.component';
@@ -9,7 +9,12 @@ import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
 import { RouterModule, Router } from '@angular/router';
-import { LogoutButtonComponent } from "../logout-button/logout-button.component";
+import { LogoutButtonComponent } from '../logout-button/logout-button.component';
+import { ChartComponent } from '../chart/chart.component';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { Transaction } from '../../models/transaction';
+import { TransactionService } from '../../services/transaction.service';
 
 @Component({
   selector: 'app-cashbook',
@@ -25,17 +30,41 @@ import { LogoutButtonComponent } from "../logout-button/logout-button.component"
     CostComponent,
     BalanceComponent,
     RouterModule,
-    LogoutButtonComponent
-],
+    LogoutButtonComponent,
+    ChartComponent,
+    CommonModule,
+    HttpClientModule,
+  ],
+
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',
 })
-export class CashbookComponent {
-  constructor(private router: Router) {}
+export class CashbookComponent implements OnInit {
+  transactions: Transaction[] = [];
+  chartData: { category: string; total: number }[] = [];
 
+  constructor(
+    private transactionService: TransactionService,
+    private router: Router
+  ) {}
   navigateWithDelay(url: string): void {
     setTimeout(() => {
       this.router.navigate([url]);
     }, 2000);
+  }
+
+  ngOnInit(): void {
+    this.fetchTransactions();
+  }
+
+  fetchTransactions(): void {
+    this.transactionService.getTransactions().subscribe(
+      (data) => {
+        this.transactions = data;
+      },
+      (error) => {
+        console.error('Error fetching transactions:', error); // debug
+      }
+    );
   }
 }
