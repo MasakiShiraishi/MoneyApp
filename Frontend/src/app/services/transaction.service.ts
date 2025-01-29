@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Transaction } from '../models/transaction';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
-  private apiUrl = 'http://localhost:5234/api/Transaction';
+  private apiUrl = `${environment.apiUrl}Transaction`;
 
   private incomeTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private costTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
