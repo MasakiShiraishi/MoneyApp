@@ -1,0 +1,4 @@
+{
+          "appService.defaultWebAppToDeploy": "/subscriptions/14bc3b0a-f4c2-4a5c-9d9c-d40d70fc95ef/resourceGroups/moneyapp_group/providers/Microsoft.Web/sites/moneyapp",
+          "appService.deploySubpath": "MoneyAppBackend"
+}
