@@ -1,0 +1,51 @@
+
+
+services:
+  backend: 
+    image: mybackendapp
+    build:
+      context: ../
+      dockerfile: MoneyAppBackend/Dockerfile
+    ports:
+      - "5234:5234"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - app-network
+    restart: always  
+
+  frontend:
+    image: myfrontendapp
+    build:
+      context: ../
+      dockerfile: Frontend/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    restart: always
+    volumes:
+      - type: bind
+        source: C:/source/EXAM/MoneyApp/Frontend/nginx.conf
+        target: /etc/nginx/nginx.conf
+    
+
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodbdata:
