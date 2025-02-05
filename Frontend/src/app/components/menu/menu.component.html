@@ -1,0 +1,68 @@
+<div class="menu-container" (click)="closeMenu($event)">
+  <img src="assets/menu_17383372.png" alt="Menu Icon" class="menu-icon" (click)="toggleMenu($event)">
+  <nav *ngIf="isMenuOpen" class="menu bg-gray-300 p-4">
+    <div class="container mx-auto flex flex-col ">
+      <div class="text-2xl font-bold my-4">Menu</div>
+      <div class="space-y-4">
+        <a routerLink="/">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/home.png" alt="Home Icon" />
+            <span class="roboto-light text-lg block">Home</span>
+          </div>
+        </a>
+        <a routerLink="/transaction">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/transaction.png" alt="Transaction Icon" />
+            <span class="roboto-light text-lg block">Transaktioner</span>
+          </div>
+        </a>
+        <a routerLink="/cashbook">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/account-book.png" alt="Cashbook Icon" />
+            <span class="roboto-light text-lg block">Kassabok</span>
+          </div>
+        </a>
+        <a routerLink="/account">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/balance.png" alt="Account Icon" />
+            <span class="roboto-light text-lg block">Konto</span>
+          </div>
+        </a>
+        <a routerLink="/cashbook/foods">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/food.png" alt="Foods Icon" />
+            <span class="roboto-light text-lg block">Mat</span>
+          </div>
+        </a>
+        <a routerLink="/cashbook/accommodation">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/accommodation.png" alt="Accommodation Icon" />
+            <span class="roboto-light text-lg block">Boende</span>
+          </div>
+        </a>
+        <a routerLink="/cashbook/clothes">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/clothes.png" alt="Clothes Icon" />
+            <span class="roboto-light text-lg block">Kläder</span>
+          </div>
+        </a>
+        <a routerLink="/cashbook/hobby">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/hobby.png" alt="Hobby Icon" />
+            <span class="roboto-light text-lg block">Hobby</span>
+          </div>
+        </a>
+        <a routerLink="/cashbook/transport">
+          <div class="flex items-center">
+            <img class="h-4 w-4 mr-2" src="/assets/menu/transport.png" alt="Transport Icon" />
+            <span class="roboto-light text-lg block">Transport</span>
+          </div>
+        </a>
+        <div class="mt-4 flex items-center">
+          <img  class="h-4 w-4 mr-2" src="/assets/menu/logout.png" alt="Logout Icon" />
+          <app-logout-button></app-logout-button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
