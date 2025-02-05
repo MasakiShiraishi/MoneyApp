@@ -9,12 +9,12 @@ import { IncomeComponent } from '../calculates/income/income.component';
 import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
 import { RouterModule, Router } from '@angular/router';
-import { LogoutButtonComponent } from '../logout-button/logout-button.component';
 import { ChartComponent } from '../chart/chart.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Transaction } from '../../models/transaction';
 import { TransactionService } from '../../services/transaction.service';
+import { MenuComponent } from "../menu/menu.component";
 
 @Component({
   selector: 'app-cashbook',
@@ -30,11 +30,11 @@ import { TransactionService } from '../../services/transaction.service';
     CostComponent,
     BalanceComponent,
     RouterModule,
-    LogoutButtonComponent,
     ChartComponent,
     CommonModule,
     HttpClientModule,
-  ],
+    MenuComponent
+],
 
   templateUrl: './cashbook.component.html',
   styleUrl: './cashbook.component.css',

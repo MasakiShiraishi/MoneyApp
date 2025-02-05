@@ -6,7 +6,7 @@ import { CostComponent } from '../calculates/cost/cost.component';
 import { BalanceComponent } from '../calculates/balance/balance.component';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CurrencyFormatService } from '../../services/currency-format-service';
-import { LogoutButtonComponent } from '../logout-button/logout-button.component';
+import { MenuComponent } from "../menu/menu.component";
 
 @Component({
   selector: 'app-home',
@@ -18,8 +18,8 @@ import { LogoutButtonComponent } from '../logout-button/logout-button.component'
     CostComponent,
     BalanceComponent,
     CommonModule,
-    LogoutButtonComponent
-  ],
+    MenuComponent
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [CurrencyPipe, CurrencyFormatService],

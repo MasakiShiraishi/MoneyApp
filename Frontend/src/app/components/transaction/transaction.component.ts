@@ -3,7 +3,7 @@ import { ArrowToHomeComponent } from '../arrows/arrow-to-home/arrow-to-home.comp
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { LogoutButtonComponent } from '../logout-button/logout-button.component';
+import { MenuComponent } from "../menu/menu.component";
 
 @Component({
   selector: 'app-transaction',
@@ -13,8 +13,8 @@ import { LogoutButtonComponent } from '../logout-button/logout-button.component'
     TransactionListComponent,
     HttpClientModule,
     CommonModule,
-    LogoutButtonComponent
-  ],
+    MenuComponent
+],
   templateUrl: './transaction.component.html',
   styleUrl: './transaction.component.css',
 })
