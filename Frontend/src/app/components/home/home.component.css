@@ -9,12 +9,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px;
+  margin: 15px;
 }
 
 .flex-item {
   flex: 1;
-  margin: 10px;
+  margin: 3%;
 }
 
 .home-section {
