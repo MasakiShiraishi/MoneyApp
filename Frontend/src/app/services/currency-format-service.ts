@@ -14,7 +14,7 @@ export class CurrencyFormatService {
       'symbol',
       '1.0-0'
     );
-    return formatteAmount ? formatteAmount.replace('SEK', '').trim() : '0';
+    return formatteAmount ? formatteAmount.replace('SEK', '').replace(',',' ').trim() : '0';
   }
   getFormattedNegativeAmount(amount: number): string {
     const negativeAmount = -amount;
@@ -24,6 +24,6 @@ export class CurrencyFormatService {
       'symbol',
       '1.0-0'
     );
-    return formatteAmount ? formatteAmount.replace('SEK', '').trim() : '0';
+    return formatteAmount ? formatteAmount.replace('SEK', '').replace(',',' ').trim() : '0';
   }
 }
