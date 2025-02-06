@@ -14,3 +14,17 @@
   font-weight: 300;
   font-style: italic;
 }
+
+.header {
+  background: linear-gradient(to left, #69bde9, #699298);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.trans-calculates {
+  background: linear-gradient(to left, #69bde9, #99c1c6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+}
