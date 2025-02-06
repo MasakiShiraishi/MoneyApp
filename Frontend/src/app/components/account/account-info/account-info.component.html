@@ -1,7 +1,7 @@
 <div class="flex flex-col my-8">
   <div
     *ngFor="let account of accounts"
-    class="flex justify-between items-center m-4 mx-6 bg-slate-100 rounded-xl p-2"
+    class="flex justify-between items-center italic m-4 mx-6 bg-slate-100 rounded-xl p-2 box-shadow"
   >
     <h2>{{ account.name }}</h2>
     <div class="px-4">
@@ -10,7 +10,7 @@
     </div>
   </div>
   <button
-    class="bg-cyan-200 rounded-xl mt-8 mx-24 p-2 px-4"
+    class="italic bg-cyan-200 rounded-xl mt-8 mx-24 p-2 px-4 box-shadow"
     title="Button"
   >
     Anslut ny konto

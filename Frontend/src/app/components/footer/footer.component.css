@@ -1,0 +1,8 @@
+.footer {
+  background: linear-gradient(to left, #69bde9, #699298);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+span {
+  font-style: italic;
+}

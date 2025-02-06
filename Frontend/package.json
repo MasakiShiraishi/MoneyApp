@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"dotnet run --project C:/source/EXAM/MoneyApp/MoneyAppBackend/MoneyAppBackend.csproj\"",
     "build": "ng build",
+    "build:ssr": "ng build --configuration production && ng run Frontend:build:production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:Frontend": "node dist/frontend/server/server.mjs",

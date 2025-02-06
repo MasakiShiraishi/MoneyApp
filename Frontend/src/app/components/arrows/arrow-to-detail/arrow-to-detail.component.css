@@ -1,0 +1,8 @@
+.arrow-to-detail {
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
+}
+
+.arrow-to-detail {
+          width: 24px;
+          height: 24px;
+        }

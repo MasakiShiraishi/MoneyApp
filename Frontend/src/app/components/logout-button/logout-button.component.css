@@ -1,8 +1,9 @@
-header {
-  position: relative;
+.logout-button {
+  color: rgb(189, 17, 17);  
+  cursor: pointer;
 }
 
-button {
-  background-color: #ea9d9d;
-  color: white;
+.logout-button:hover {
+  background-color: #cbc8cf; 
+  padding: 5%;
 }

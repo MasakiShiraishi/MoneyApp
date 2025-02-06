@@ -1,0 +1,49 @@
+.menu-container {
+  position: relative;
+}
+
+.menu-icon {
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+nav.menu {
+  background: linear-gradient(to bottom, #e2e8f0, #cbd5e0);
+  padding: 1.5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+nav .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+nav .space-y-4 .flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; 
+}
+
+nav .space-y-4 a {
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #000;
+  text-align: left;
+}
+
+nav .space-y-4 a:hover {
+  text-decoration: underline;
+}
+
+nav .mt-4 {
+  margin-top: 1rem;
+  text-align: left;
+}
