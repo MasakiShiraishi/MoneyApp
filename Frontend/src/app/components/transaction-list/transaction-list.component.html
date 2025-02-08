@@ -3,7 +3,7 @@
 </div>
 <ng-template #transactionList>
 <div class="transactions-container" *ngIf="transactions.length > 0; else noTransactions">
-  <h2 class="italic text-xl font-bold ml-6 mt-4">Lista</h2>
+  <h2 class="italic text-xl font-bold ml-6 mt-4 limited-width text-subtitle">Lista</h2>
   <ul>
     
     <ng-container  *ngFor="let transaction of transactions; let i = index">
@@ -11,18 +11,18 @@
     >
       <p
         *ngIf="shouldShowDate(formatDate(transaction.date), lastDate)"
-        class="italic text-lg font-bold py-2 ml-6"
+        class="italic text-lg font-bold py-2 ml-6 limited-width text-subtitle"
       >
         {{ formatDate(transaction.date) }}
       </p>
-      <div class="transaction-list flex justify-between p-1 mt-2 mx-6 bg-slate-100 rounded-xl">
+      <div class="transaction-list flex justify-between p-1 mt-2 mx-6 bg-slate-100 rounded-xl limited-width">
         <div class="ml-6">
-          <p class="text-lg">
+          <p class="text-lg text-content">
             {{ transaction.name }}
           </p>
         </div>
         <div>
-          <p class="text-lg mr-6">
+          <p class="text-lg mr-6 text-content">
             {{
               transaction.payment === "AMEX" || transaction.payment === "ICA" || transaction.payment === "Bank Transfer"
                 ? getFormattedNegativeAmount(transaction.amount)

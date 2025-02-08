@@ -1,0 +1,21 @@
+@media (min-width: 768px) {
+  .limited-width-cashbook {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .limited-width-header {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .limited-width-cashbook {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .limited-width-header {
+    margin-left: 25%;
+    margin-right: 15%;
+  }
+}

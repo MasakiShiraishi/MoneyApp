@@ -28,3 +28,51 @@
 .box-shadow {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
 }
+
+.limited-width {
+  max-width: 90%;
+}
+
+@media (min-width: 768px) {
+  .limited-width {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2%;
+  }
+  .text-content {
+    font-size: 1rem;
+  }
+  .text-subtitle {
+    font-size: 1.25rem;
+  }
+  .text-responsive {
+    font-size: 1.75rem; 
+  }
+}
+@media (min-width: 1024px) {
+  .limited-width {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2%;
+  }
+  .text-content {
+    font-size: 1.25rem;
+  }
+  .text-subtitle {
+    font-size: 1.5rem;
+  }
+  .text-responsive {
+    font-size: 2rem; 
+  }
+}
+@media (min-width: 1440px) {
+  .text-content {
+    font-size: 1.5rem;
+  }
+  .text-subtitle {
+    font-size: 1.75rem;
+  }
+  .text-responsive {
+    font-size: 2.25rem; 
+  }
+}

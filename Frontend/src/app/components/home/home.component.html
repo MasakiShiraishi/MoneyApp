@@ -1,20 +1,29 @@
 <div>
-  <header
-    class="header py-2 text-center flex justify-between items-center"
-  >
-    <h1 class="roboto text-2xl font-bold text-center flex-grow ml-4">HOME</h1>
-    <app-menu></app-menu>
+  <header class="header py-2 md:py-4 lg:py-6 text-center">
+    <div class="max-w-screen-lg mx-auto flex items-center limited-width-header">
+      <div></div>
+      <div class="flex-grow text-center pr-11">
+        <h1 class="roboto text-2xl font-bold text-responsive">HOME</h1>
+      </div>
+      <app-menu></app-menu>
+    </div>
   </header>
 
-  <h1 class="roboto text-2xl mx-2 font-bold mt-8">Sparande</h1>
-  <div class="flex justify-between mt-2 mx-6 p-3 bg-slate-100 rounded-xl box-shadow">
+  <h1 class="roboto text-2xl mx-2 font-bold mt-8 limited-width text-responsive">Sparande</h1>
+  <div
+    class="flex justify-between mt-2 mx-6 p-3 bg-slate-100 rounded-xl box-shadow limited-width text-content"
+  >
     <h2 class="mx-2">Total</h2>
     <div>{{ getFormatAmount(totalAmount || 0) }} kr</div>
   </div>
-  <h1 class="roboto text-2xl mx-2 font-bold mt-8">Hushållets kontobok</h1>
+  <h1 class="roboto text-2xl mx-2 font-bold mt-8 limited-width text-responsive">
+    Hushållets kontobok
+  </h1>
 
-  <div class="flex-container bg-slate-100 rounded-xl box-shadow">
-    <div class="flex-item">
+  <div
+    class="flex-container bg-slate-100 rounded-xl box-shadow limited-width-household"
+  >
+    <div class="flex-itemlimited-width">
       <img
         src="/assets/money-pie-chart.png"
         alt="Money Pie Chart"

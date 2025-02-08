@@ -18,7 +18,56 @@
 }
 
 .home-section {
-  font-size: 1.5rem;   
-  border-radius: 0.75rem; 
-  padding: 0.35rem; 
+  font-size: 1.5rem;
+  border-radius: 0.75rem;
+  padding: 0.35rem;
+}
+
+@media (min-width: 768px) {
+  .limited-width-household {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .limited-width-header {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+  @media (min-width: 1024px){
+    .limited-width-household {
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+  .limited-width-header {
+    margin-left: 25%;
+    margin-right: 15%;
+    
+  }
+  
+}
+@media (min-width: 768px) {
+  .limited-width {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2%;
+  }
+  .text-responsive {
+    font-size: 1.75rem; 
+  }
+}
+@media (min-width: 1024px) {
+  .limited-width {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2%;
+  }
+  .text-responsive {
+    font-size: 2rem; 
+  }
+}
+@media (min-width: 1440px) {
+  .text-responsive {
+    font-size: 2.25rem; 
+  }
 }
