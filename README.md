@@ -1,8 +1,13 @@
 # MoneyApp
 
-MoneyApp is an application designed to help individuals manage their finances. This project uses Angular for the frontend C# for backend with MOngoDB.
+MoneyApp is an application designed to help individuals manage their finances. This project uses Angular for the frontend C# for backend with MongoDB.
 
 ![MoneyApp Screenshot](./moneyApp.png)
+
+## Responsive Design
+
+This application is designed to be responsive and can be used on both desktop and mobile devices. The layout and components adjust automatically to provide an optimal user experience on any screen size. However, it is recommended to use this application from a mobile device for the best experience.
+
 
 # Backend
 
