@@ -1,0 +1,15 @@
+.chart-canvas {
+  width: 70%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (min-width: 768px) {
+  .chart-canvas {
+    width: 75%;
+    height: 50%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+}

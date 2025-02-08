@@ -6,3 +6,29 @@
 span {
   font-style: italic;
 }
+
+.footer-icon {
+  width: 1.75rem; 
+  height: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .footer-icon {
+    width: 2rem; 
+    height: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-icon {
+    width: 2.5rem; 
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer-icon {
+    width: 3rem; 
+    height: 3rem;
+  }
+}

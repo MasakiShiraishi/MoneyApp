@@ -17,7 +17,7 @@ nav.menu {
   width: 45%;
   height: 100%;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 nav .container {
@@ -29,7 +29,7 @@ nav .container {
 nav .space-y-4 .flex {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 nav .space-y-4 a {
@@ -46,4 +46,10 @@ nav .space-y-4 a:hover {
 nav .mt-4 {
   margin-top: 1rem;
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  nav.menu {
+    width: 30%;
+  }
 }
