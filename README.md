@@ -87,7 +87,7 @@ docker-compose up --build
 
 
 # Deployment
-- branch: deployment-with-main
+- branch: main
 - Base URL: https://moneyapp2025.netlify.app
 ### Frontend:
 - Netlify
