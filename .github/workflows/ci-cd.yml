@@ -1,0 +1,54 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 'lts/*'
+
+    - name: List root directory contents
+      run: ls -al
+
+    - name: List Frontend directory contents
+      run: ls -al ./Frontend 
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./Frontend
+
+    - name: Check for test files
+      id: check_test_files
+      run: |
+        if [ -z "$(find ./Frontend/src -name '*.spec.ts')" ]; then
+          echo "No test files found"
+          echo "::set-output name=skip_tests::true"
+        else
+          echo "Test files found"
+          echo "::set-output name=skip_tests::false"
+        fi
+
+    - name: Run tests
+      if: steps.check_test_files.outputs.skip_tests == 'false'
+      run: npm test
+      working-directory: ./Frontend
+    
+    
+
+    - name: Build project
+      run: npm run build
+      working-directory: ./Frontend 
