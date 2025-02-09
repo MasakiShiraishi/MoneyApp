@@ -80,6 +80,9 @@ variables:
 - SMTP_PASSWORD=(replace your secret password)
 ```
 ### 2.Building and Running Docker Containers
+```bash
+cd config
+```
 docker-compose up --build
 
 
